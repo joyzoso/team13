@@ -54,7 +54,7 @@ app.post("/questions", function(request, response) {
   console.log(request.body);
   var item = {"text": request.body.text1,
               "category": request.body.category,
-              "authorName": "Anonymous"
+              "authorName": "Code Queen"
               };
 
   var successful =
