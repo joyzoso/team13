@@ -33,6 +33,7 @@ print(newQuestion);
 
 questions.push(newQuestion);
 window.add(di, ai);
+window.location = "/static/feed.html";
 refreshDOM();
 
 // Clear Inputs

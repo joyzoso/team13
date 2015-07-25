@@ -72,7 +72,7 @@ app.post("/questions", function(request, response) {
 
   if (successful) {
     questions.push(item);
-    writeFile("data.txt", JSON.stringify(questions));
+    writeFile("questions.txt", JSON.stringify(questions));
   } else {
     item = undefined;
   }
