@@ -1,0 +1,76 @@
+/* --- Navigation Styles --- */
+
+nav {
+    width: 100px;
+    line-height: 30px;
+    background: white;
+    font-size: 15px;
+    position: fixed;
+    left: 0;
+    top: 280px;
+    margin-top: 50px;
+    z-index: 1;
+}
+
+nav ul {
+    background-color: white;
+    padding: 0;
+    margin: 0 auto;
+}
+
+nav div#pull {
+  display: none;
+}
+
+.left-nav a:hover {
+  background-color: #65A7BD;
+  color: white;
+  text-decoration: none;
+}
+
+/* --- Clearfixes --- */
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+
+/*-- Header Styles --*/
+
+.search {
+  border: 2px solid black;
+  display: inline;
+}
+
+.q-header {
+  display: inline;
+}
+
+.q-header img {
+  width: 40%;
+  height: 40%;
+  }
+
+.header-padding {
+  padding-top: 18px;
+}
+
+.questions {
+  padding: 50px 100px 0 300px;
+}
+
+.show-answers {
+  cursor: pointer;
+}
+
+.q-answer{
+  padding-left: 24px;
+  display:none;
+}
