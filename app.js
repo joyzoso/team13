@@ -52,25 +52,24 @@ app.get("/questions", function(request, response){
 
 app.post("/questions", function(request, response) {
   console.log(request.body);
-  var item = {"desc": request.body.desc,
-              "author": request.body.author,
-              "date": new Date(),
-              "price": Number(request.body.price),
-              "sold": false };
+  var item = {"text": request.body.text1,
+              "category": request.body.category,
+              "authorName": "Anonymous"
+              };
 
-  var successful = 
-      (item.desc !== undefined) &&
-      (item.author !== undefined) &&
-      (item.price !== undefined);
+  var successful =
+      (item.text !== undefined) &&
+      (item.category !== undefined) &&
+      (item.authorName !== undefined);
 
   if (successful) {
-    listings.push(item);
-    writeFile("data.txt", JSON.stringify(listings));
+    questions.push(item);
+    writeFile("questions.txt", JSON.stringify(questions));
   } else {
     item = undefined;
   }
 
-  response.send({ 
+  response.send({
     item: item,
     success: successful
   });
@@ -105,7 +104,7 @@ app.post("/listings", function(request, response) {
               "price": Number(request.body.price),
               "sold": false };
 
-  var successful = 
+  var successful =
       (item.desc !== undefined) &&
       (item.author !== undefined) &&
       (item.price !== undefined);
@@ -117,7 +116,7 @@ app.post("/listings", function(request, response) {
     item = undefined;
   }
 
-  response.send({ 
+  response.send({
     item: item,
     success: successful
   });
