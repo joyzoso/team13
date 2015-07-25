@@ -3,6 +3,7 @@
 ##Contributors:
 Nicole Archambault, Cleri Philiastides, Michelle Waddell, Barbara Hazlett, Jenny Louthan, Joy Earl, Amy Johnson, Elizabeth Deering
 
+##Description:
 Studies show that beginning in middle school, girls tend to quit participating in their science and math education. This continues throughout a woman’s career, with many women reporting the tech field to be an unwelcoming, even hostile environment. Our goal is for Code Queen to be a website message board that is a safe place for anyone to ask a tech question without fear of sounding “stupid.” It will also be a place where women in tech can connect with mentors, grooming noobs for tech careers.
 
 Users will be able to see previously asked questions and answers and, after registering, ask their own questions. Our hope is that these interactions will develop into mentor/mentee relationships.
@@ -23,11 +24,7 @@ If you don't already have these tools, download and install them before you star
 
 Once you have all prerequisites installed, open your CLI and navigate to the project folder.
 
-Navigate to the project folder
-
-		cd /Users/mycomp/Documents/we-code-node-starter
-
-Press return, and you'll be taken to that folder.
+Navigate to the project folder 
 
 To install the app, type `npm install` and press return. You should see several packages and dependencies being installed.
 
@@ -73,13 +70,9 @@ To install the app, type `npm install` and press return. You should see several 
 	└── type-is@1.6.5 (media-typer@0.3.0, mime-types@2.1.3)
 ~~~
 
-To start the app, type `node app.js` in the command line. After a few seconds, you should see a success message. Keep your command line tool open, and open a new tab in your web browser. In the URL bar, type `http://localhost:8889/static/index.html`.
+To start the app, type `node app.js` in the command line. After a few seconds, you should see a success message. Keep your command line tool open, and open a new tab in your web browser. In the URL bar, type `http://localhost:8889/static/landing_page.html`.
 
-When the page loads, there should be a sample item already in your store. To see the app in action, resize your browser window to take up one half of the screen, and the command line to take up the other half. Watch what happens in the command line when you click the "Delete" button on the existing listing.
-
-		Success reading file:  data.txt
-
-In the browser, create a new listing by entering an Author, Description, and Price in the form and clicking **Add Listing**. You should get the same success message. The app is changing entries in the data.txt file as you interact with the browser.
+From there, the user is able to ask a question to the community or browse exisiting content.
 
 To stop serving the page to your browser, press Control+C in the CLI.
 
