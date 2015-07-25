@@ -1,33 +1,29 @@
-# README
+# Code Queen
 
-Use this readme to get started setting up and exploring the Apparel Store web application. *Next Steps* suggests tasks to modify the app to better familiarize you with how it works.
+##Contributors:
+Nicole Archambault, Cleri Philiastides, Michelle Waddell, Barbara Hazlett, Jenny Louthan, Joy Earl, Amy Johnson, Elizabeth Deering
 
-# About the App
+Studies show that beginning in middle school, girls tend to quit participating in their science and math education. This continues throughout a woman’s career, with many women reporting the tech field to be an unwelcoming, even hostile environment. Our goal is for Code Queen to be a website message board that is a safe place for anyone to ask a tech question without fear of sounding “stupid.” It will also be a place where women in tech can connect with mentors, grooming noobs for tech careers.
 
-This sample template creates a web application that allows you to create "listings" by filling in a few fields in a form. The listings are stored in the data.txt file.
+Users will be able to see previously asked questions and answers and, after registering, ask their own questions. Our hope is that these interactions will develop into mentor/mentee relationships.
 
-You can mark a listing as sold which changes the color of the listing and strikes out its text. 
-
-You can also click **Delete** on a listing to permanently delete it from the data.txt file.
-
-Read the notes in the code to get a better idea of which parts are doing what. Don't be afraid to open the files and read through them to learn how things are working together. 
 
 ## Required tools
 
-If you don't already have these tools, download and install them before you start working with the Apparel Store app.
+If you don't already have these tools, download and install them before you start working with Code Queen.
 
 * Modern web browser (may we suggest [Chrome?](https://www.google.com/chrome/browser))
 * Command Line Interface (CLI)
 	* Mac OSX: Terminal is already installed, or try [iTerm](https://www.iterm2.com/)
 	* Windows: Command Prompt (DOS)
-* [Node.js](https://nodejs.org/download/) 
-* A text editor or coding tool of your choice. [Sublime Text 2](http://www.sublimetext.com/2) is available for free for Mac and Windows, but will occassionally ask you to purchase a license when you save your files. 
+* [Node.js](https://nodejs.org/download/)
+* A text editor or coding tool of your choice. [Sublime Text 2](http://www.sublimetext.com/2) is available for free for Mac and Windows, but will occassionally ask you to purchase a license when you save your files.
 
 ## Setup
 
 Once you have all prerequisites installed, open your CLI and navigate to the project folder.
 
-_New to command line?_ Navigate to the project folder using `cd` (which stands for change directory). If you know the full path of the directory you can type it in, or you can click and drag the folder over to your CLI window and it will automatically fill in the path to that folder.
+Navigate to the project folder
 
 		cd /Users/mycomp/Documents/we-code-node-starter
 
@@ -79,35 +75,12 @@ To install the app, type `npm install` and press return. You should see several 
 
 To start the app, type `node app.js` in the command line. After a few seconds, you should see a success message. Keep your command line tool open, and open a new tab in your web browser. In the URL bar, type `http://localhost:8889/static/index.html`.
 
-When the page loads, there should be a sample item already in your store. To see the app in action, resize your browser window to take up one half of the screen, and the command line to take up the other half. Watch what happens in the command line when you click the "Delete" button on the existing listing. 
+When the page loads, there should be a sample item already in your store. To see the app in action, resize your browser window to take up one half of the screen, and the command line to take up the other half. Watch what happens in the command line when you click the "Delete" button on the existing listing.
 
 		Success reading file:  data.txt
 
-In the browser, create a new listing by entering an Author, Description, and Price in the form and clicking **Add Listing**. You should get the same success message. The app is changing entries in the data.txt file as you interact with the browser. 
+In the browser, create a new listing by entering an Author, Description, and Price in the form and clicking **Add Listing**. You should get the same success message. The app is changing entries in the data.txt file as you interact with the browser.
 
 To stop serving the page to your browser, press Control+C in the CLI.
 
-
-### Exploratory Questions 
-
-What happens if you open data.txt and edit the file?
-
-What file(s) would you change to add a field to the form?
-
-How is the date being filled in? How would you change the timezone to Chicago (CST)?
-
-## Next Steps
-
-Try some of these tasks on your own to improve this app, and familiarize (or refresh) yourself with JavaScript and Node.js.
-
-* Create an alert when the user tries to Delete a listing, and ask them to verify that they want to permanently delete the item.
-
-* Add a new field to the form, 'Size'. Make the user select their size from a drop-down menu.
-
-* Advanced: Create an "Edit" function, so that the user doesn't have to delete a listing or open the data.txt file if they make a typo.
-
-## Resources
-
-* [Node](https://nodejs.org/)
-* [NodeSchool](http://nodeschool.io/)
-* [npm](https://www.npmjs.com/)
+MIT License
