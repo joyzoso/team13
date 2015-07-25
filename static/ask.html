@@ -5,7 +5,36 @@
     <link href="style.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <h1>Ask form goes here</h1>
-    <a href="url">submit</a>
-  </body>
+
+
+    <div class="wrapper">
+      <div id="header">
+          <h1>New Title</h1>
+      </div>
+
+      <div id="question-form">
+        <p>Ask a Question</p>
+        <form name="myform" action="javascript:addQuestion()">
+          <div class="row">
+            <label>Categories:</label>
+            <input id="author-input" name="category" type="radio" value="tech"/>Tech/Coding
+            <input id="author-input" name="category" type="radio" value="career"/>Career
+          </div>
+          <div class="row">
+            <label>Your question:</label>  <textarea id="question" name="Price" cols="50" rows="5"/></textarea>
+          </div>
+          <div class="row right">
+            <input id="submitButton" name="Submit"  type="submit" value="ask"/>
+          </div>
+        </form>
+      </div>
+
+      <ul class="listings"></ul>
+
+    </div>
+
+
+	<script src="jquery-1.9.0.js"></script>
+	<script src="questions.js"></script>
+	</body>
 </html>
