@@ -1,6 +1,6 @@
 body {
   background-color: #efefef;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
 }
 
 h1 {
@@ -10,6 +10,10 @@ h1 {
 .wrapper {
   width: 700px;
   margin: 70px auto 0;
+}
+
+.lgSpacing {
+  margin-bottom: 50px;
 }
 
 #header {
