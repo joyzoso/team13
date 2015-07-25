@@ -51,66 +51,78 @@ container.html("");
 
 for (var i=0; i<questions.length; i++){
   var currentQuestion = questions[i];
-  var listItem = $("<li>");
-  // content
-  listItem.append($("<h3>").html(currentQuestion.author));
-  listItem.append("<h6>" + currentQuestion.date + "</h6>");
-  listItem.append("<p>" + currentQuestion.desc + "</p>");
-  listItem.append("<p>$" + currentQuestion.price + "</p>");
 
-  if (currentQuestion.sold === true) {
-    print("its sold already");
-    listItem.addClass("sold");
-  }
+  var questionPanel = $('<div class="panel"><span class="q-text">' + currentQuestion.text + '</span><br><span class="q-username">' + currentQuestion.authorName + '</span></div>');
+  var showAnswers = $('<span class="show-answers pull-right" id="' + i + '">show answers</span>');
+  questionPanel.append(showAnswers);
+  container.append(questionPanel);
+
+  var answerPanel = $('<div class="panel q-answer" id="q-answer' + i + '"><span class="q-username">' + currentQuestion.answers[0].authorName + '</span><br><span class="q-body">' + currentQuestion.answers[0].text + '</span></div>');
+
+  container.append(answerPanel);
+
+  // var listItem = $("<li>");
+  // // content
+  // listItem.append($("<h3>").html(currentQuestion.author));
+  // listItem.append("<h6>" + currentQuestion.date + "</h6>");
+  // listItem.append("<p>" + currentQuestion.desc + "</p>");
+  // listItem.append("<p>$" + currentQuestion.price + "</p>");
+
+  // if (currentQuestion.sold === true) {
+  //   print("its sold already");
+  //   listItem.addClass("sold");
+  // }
 
 
-  // delete button
-  var delButton = $("<a class='del'>").attr("id", i).html("Delete");
-  listItem.append(delButton);
-  delButton.click(function(){
-    var buttonClicked = $(this);
-    var buttonID = buttonClicked.attr("id");
-    print("delete");
-    questions.splice(buttonID, 1);
-    window.del(buttonID);
-    refreshDOM();
-  });
+  // // delete button
+  // var delButton = $("<a class='del'>").attr("id", i).html("Delete");
+  // listItem.append(delButton);
+  // delButton.click(function(){
+  //   var buttonClicked = $(this);
+  //   var buttonID = buttonClicked.attr("id");
+  //   print("delete");
+  //   questions.splice(buttonID, 1);
+  //   window.del(buttonID);
+  //   refreshDOM();
+  // });
 
-  //show answers
+  // //show answers
 
-  var answerButton = $(".show-answers");
-  answerButton.click(function(){
-    var answers = $(".q-answer");
+  showAnswers.click(function(){
+    buttonClicked = $(this);
+    var buttonID = buttonClicked.attr('id');
+    var answers = $('#q-answer' + buttonID);
     if(answers.is(':visible')){
       answers.hide("fast");
+      buttonClicked.html("show answers");
     }
     else{
       answers.show("slow");
-      $(this).html("hide answers");
+      buttonClicked.html("hide answers");
     }
     // refreshDOM();
   });
 
-  // sold button
-  var soldButton = $("<a>").attr("id", i).html("Sold!");
-  listItem.append(soldButton);
-  soldButton.click(function(){
-    var buttonClicked = $(this);
-    var buttonID = buttonClicked.attr("id");
+  // // sold button
+  // var soldButton = $("<a>").attr("id", i).html("Sold!");
+  // listItem.append(soldButton);
+  // soldButton.click(function(){
+  //   var buttonClicked = $(this);
+  //   var buttonID = buttonClicked.attr("id");
 
-    buttonClicked.parent().addClass("sold");
-    questions[buttonID].sold = true;//!(questions[buttonID].sold);
+  //   buttonClicked.parent().addClass("sold");
+  //   questions[buttonID].sold = true;//!(questions[buttonID].sold);
 
-    /* edit(id, desc, author, price, sold) */
-    window.edit(buttonID, l.desc, l.author, undefined, true );
-    // refreshDOM();
-  });
+  //   /* edit(id, desc, author, price, sold) */
+  //   window.edit(buttonID, l.desc, l.author, undefined, true );
+  //   // refreshDOM();
+  // });
 
   // listItem += "</li>";
 
 
-  $(".questions").append(listItem);
-}
+  // $(".questions").append(listItem);
+  }
 }
 
 // Implement the get() function
