@@ -55,3 +55,12 @@ nav div#pull {
   padding: 50px 100px 0 300px;
 
 }
+
+.show-answers {
+  cursor: pointer;
+}
+
+.q-answer{
+  padding-left: 24px;
+  display:none;
+}
