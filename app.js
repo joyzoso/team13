@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 
 // The global datastore for this example
-var listings;
+var questions;
 
 // Asynchronously read file contents, then call callbackFn
 function readFile(filename, defaultData, callbackFn) {
@@ -40,74 +40,73 @@ function writeFile(filename, data, callbackFn) {
 }
 
 // get all items
-app.get("/listings", function(request, response){
+app.get("/questions", function(request, response){
   response.send({
-    listings: listings,
+    questions: questions,
     success: true
   });
 });
 
-// get one item
-app.get("/listings/:id", function(request, response){
-  var id = request.params.id;
-  var item = listings[id];
-  response.send({
-    listings: item,
-    success: (item !== undefined)
-  });
-});
+// // get one item
+// app.get("/listings/:id", function(request, response){
+//   var id = request.params.id;
+//   var item = listings[id];
+//   response.send({
+//     listings: item,
+//     success: (item !== undefined)
+//   });
+// });
 
 // create new item
-app.post("/listings", function(request, response) {
+app.post("/questions", function(request, response) {
   console.log(request.body);
-  var item = {"desc": request.body.desc,
-              "author": request.body.author,
-              "date": new Date(),
-              "price": Number(request.body.price),
-              "sold": false };
+  var item = {"category": request.body.category,
+              "text": request.body.text,
+              "authorName": "anonymous"
+              };
 
-  var successful = 
-      (item.desc !== undefined) &&
-      (item.author !== undefined) &&
-      (item.price !== undefined);
+  var successful =
+      (item.category !== undefined) &&
+      (item.text !== undefined) &&
+      (item.authorName !== undefined);
 
   if (successful) {
-    listings.push(item);
-    writeFile("data.txt", JSON.stringify(listings));
+    questions.push(item);
+    writeFile("data.txt", JSON.stringify(questions));
   } else {
     item = undefined;
   }
 
-  response.send({ 
+  response.send({
     item: item,
     success: successful
   });
 });
 
-// update one item
-app.put("/listings/:id", function(request, response){
-  // change listing at index, to the new listing
-  var id = request.params.id;
-  var oldItem = listings[id];
-  var item = { "desc": request.body.desc,
-               "author": request.body.author,
-               "date": new Date(),
-               "price": request.body.price,
-               "sold": request.body.sold };
-  item.desc = (item.desc !== undefined) ? item.desc : oldItem.desc;
-  item.author = (item.author !== undefined) ? item.author : oldItem.author;
-  item.price = (item.price !== undefined) ? item.price : oldItem.price;
-  item.sold = (item.sold !== undefined) ? JSON.parse(item.sold) : oldItem.sold;
-
-  // commit the update
-  listings[id] = item;
-  writeFile("data.txt", JSON.stringify(listings));
-
-  response.send({
-    item: item,
-    success: true
-  });
-});
+// // update one item
+// app.put("/listings/:id", function(request, response){
+//   // change listing at index, to the new listing
+//   var id = request.params.id;
+//   var oldItem = listings[id];
+//   var item = { "desc": request.body.desc,
+//                "author": request.body.author,
+//                "date": new Date(),
+//                "price": request.body.price,
+//                "sold": request.body.sold };
+//   item.desc = (item.desc !== undefined) ? item.desc : oldItem.desc;
+//   item.author = (item.author !== undefined) ? item.author : oldItem.author;
+//   item.price = (item.price !== undefined) ? item.price : oldItem.price;
+//   item.sold = (item.sold !== undefined) ? JSON.parse(item.sold) : oldItem.sold;
+//
+//   // commit the update
+//   listings[id] = item;
+//   writeFile("data.txt", JSON.stringify(listings));
+//
+//   response.send({
+//     item: item,
+//     success: true
+//   });
+// });
 
 // delete entire list
 app.delete("/listings", function(request, response){
@@ -140,7 +139,7 @@ function initServer() {
   // When we start the server, we must load the stored data
   var defaultList = "[]";
   readFile("data.txt", defaultList, function(err, data) {
-    listings = JSON.parse(data);
+    questions = JSON.parse(data);
   });
 }
 

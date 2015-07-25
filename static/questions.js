@@ -13,49 +13,49 @@ if (debug === true){
 }
 
 // Global datastore
-var listings;
+var questions=[];
 
 // Implement addQuestion()
 function addQuestion(){
-var newListing = {};
+var newQuestion = {};
 
 console.log("hello");
-var ai = $('#author-input').val();
-var di = $('#desc-input').val();
-var pi = $('#price-input').val();
+var ai = $('input[name="category"]:checked').val();
+var di = $('#question-input').val();
+console.log(di)
 
-newListing.author = ai;
-newListing.desc = di;
-newListing.price = pi;
-newListing.date = new Date();
+newQuestion.category = ai;
+newQuestion.text1 = di;
+console.log(di)
+newQuestion.textName = "anonymous";
 
-print(newListing);
+print(newQuestion);
 
-listings.push(newListing);
-window.add(di, ai, pi);
+questions.push(newQuestion);
+window.add(di, ai);
 refreshDOM();
 
 // Clear Inputs
-$('#author-input').val("");
-$('#desc-input').val("");
-$('#price-input').val("");
+$('#category-input').val("");
+$('#question-input').val("");
+
 }
 
 
 // Implement refreshDOM()
 function refreshDOM(){
-if (listings === undefined) return;
+if (questions === undefined) return;
 
-var container = $(".listings");
+var container = $(".questions");
 container.html("");
 
-for (var i=0; i<listings.length; i++){
-  var currentListing = listings[i];
+for (var i=0; i<questions.length; i++){
+  var currentListing = questions[i];
   var listItem = $("<li>");
   // content
-  listItem.append($("<h3>").html(currentListing.author));
+  listItem.append($("<h3>").html(currentListing.text));
   listItem.append("<h6>" + currentListing.date + "</h6>");
-  listItem.append("<p>" + currentListing.desc + "</p>");
+  listItem.append("<p>" + currentListing.category + "</p>");
   listItem.append("<p>$" + currentListing.price + "</p>");
 
   if (currentListing.sold === true) {
@@ -71,7 +71,7 @@ for (var i=0; i<listings.length; i++){
     var buttonClicked = $(this);
     var buttonID = buttonClicked.attr("id");
     print("delete");
-    listings.splice(buttonID, 1);
+    questions.splice(buttonID, 1);
     window.del(buttonID);
     refreshDOM();
   });
@@ -84,17 +84,17 @@ for (var i=0; i<listings.length; i++){
     var buttonID = buttonClicked.attr("id");
 
     buttonClicked.parent().addClass("sold");
-    listings[buttonID].sold = true;//!(listings[buttonID].sold);
+    questions[buttonID].sold = true;//!(questions[buttonID].sold);
 
-    /* edit(id, desc, author, price, sold) */
-    window.edit(buttonID, l.desc, l.author, undefined, true );
+    /* edit(id, category, text, price, sold) */
+    window.edit(buttonID, l.category, l.text, undefined, true );
     // refreshDOM();
   });
 
   // listItem += "</li>";
 
 
-  $(".listings").append(listItem);
+  $(".questions").append(listItem);
 }
 }
 
@@ -102,30 +102,30 @@ for (var i=0; i<listings.length; i++){
 function get() {
   $.ajax({
     type: "get",
-    url: "/listings",
+    url: "/questions",
     success: function(data) {
-      listings = data.listings;
-      //console.log(listings);
+      questions = data.questions;
+      //console.log(questions);
       refreshDOM();
     }
   });
 }
 
-// Implement the add(desc, author, price) function
-function add(desc, author, price) {
+// Implement the add(category, text, price) function
+function add(text, category) {
   $.ajax({
     type: "post",
-    data: {"desc": desc, "author": author, "price": price},
-    url: "/listings",
+    data: {"category": category, "text": text},
+    url: "/questions",
     success: function(data) { }
   });
 }
 
-function edit(id, desc, author, price, sold) {
+function edit(id, category, text, price, sold) {
   $.ajax({
     type: "put",
-    data: {desc: desc, author: author, price: price, sold: sold},
-    url: "/listings/" + id,
+    data: {category: category, text: text, price: price, sold: sold},
+    url: "/questions/" + id,
     success: function(data) { }
   });
 }
@@ -133,7 +133,7 @@ function edit(id, desc, author, price, sold) {
 function del(id) {
   $.ajax({
     type: "delete",
-    url: "/listings/" + id,
+    url: "/questions/" + id,
     success: function(data) {
       //console.log(data);
     }
@@ -143,7 +143,7 @@ function del(id) {
 function delAll() {
   $.ajax({
     type: "delete",
-    url: "/listings",
+    url: "/questions",
     success: function(data) { }
   });
 }
