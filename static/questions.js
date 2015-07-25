@@ -116,7 +116,7 @@ function get() {
 function add(text, category) {
   $.ajax({
     type: "post",
-    data: {"category": category, "text": text},
+    data: {"category": category, "text1": text},
     url: "/questions",
     success: function(data) { }
   });

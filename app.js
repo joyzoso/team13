@@ -52,16 +52,15 @@ app.get("/questions", function(request, response){
 
 app.post("/questions", function(request, response) {
   console.log(request.body);
-  var item = {"desc": request.body.desc,
-              "author": request.body.author,
-              "date": new Date(),
-              "price": Number(request.body.price),
-              "sold": false };
+  var item = {"text": request.body.text1,
+              "category": request.body.category,
+              "authorName": "Anonymous"
+              };
 
   var successful =
-      (item.desc !== undefined) &&
-      (item.author !== undefined) &&
-      (item.price !== undefined);
+      (item.text !== undefined) &&
+      (item.category !== undefined) &&
+      (item.authorName !== undefined);
 
   if (successful) {
     questions.push(item);
