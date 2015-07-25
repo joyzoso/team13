@@ -4,6 +4,7 @@
     <link href="reset.css" rel="stylesheet" type="text/css">
     <link href="style.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700' rel='stylesheet' type='text/css'>
+
   </head>
   <body>
 
@@ -14,16 +15,20 @@
       </div>
       <div id="question-form">
         <form name="myform" action="javascript:addQuestion()">
-          <div class="row">
-            <label>Categories:</label>
-            <input id="category-input" name="category" type="radio" value="tech"/ checked>Tech/Coding
-            <input id="category-input" name="category" type="radio" value="career"/>Career
+          <div class="smSpacing"
+            <div class="row">
+              <label>Categories:</label>
+              <input id="category-input" name="category" type="radio" value="tech"/ checked>Tech/Coding
+              <input id="category-input" name="category" type="radio" value="career"/>Career
+            </div>
           </div>
-          <div class="row">
-            <label>Your question:</label>  <textarea id="question-input" name="Price" cols="50" rows="5"/></textarea>
+          <div class="smSpacing">
+            <div class="row">
+              <label>Your question:</label>  <textarea id="question-input" name="Price" cols="50" rows="5"/></textarea>
+            </div>
           </div>
-          <div class="row right">
-            <input id="submitButton" name="Submit"  type="submit" value="ask"/>
+          <div class="center">
+            <input id="submitButton" name="Submit"  type="submit" value="Ask"/>
           </div>
         </form>
       </div>

@@ -16,6 +16,13 @@ h1 {
   margin-bottom: 50px;
 }
 
+.smSpacing {
+  margin-bottom: 20px;
+}
+.center {
+  margin-left: 250px;
+}
+
 #header {
   color: #000000;
   margin: 50px;
