@@ -57,7 +57,12 @@ for (var i=0; i<questions.length; i++){
   questionPanel.append(showAnswers);
   container.append(questionPanel);
 
-  var answerPanel = $('<div class="panel q-answer" id="q-answer' + i + '"><span class="q-username">' + currentQuestion.answers[0].authorName + '</span><br><span class="q-body">' + currentQuestion.answers[0].text + '</span></div>');
+  var answerPanel = $('<div class="panel q-answer" id="q-answer' + i + '"></div>');
+
+  for(var j = 0; j < currentQuestion.answers.length; j++){
+    var answer = $('<span class="q-username">' + currentQuestion.answers[j].authorName + '</span><br><span class="q-body">' + currentQuestion.answers[j].text + '</span><br/><br/>');
+    answerPanel.append(answer);
+  }
 
   container.append(answerPanel);
 
