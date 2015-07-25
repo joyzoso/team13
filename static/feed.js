@@ -13,25 +13,25 @@ if (debug === true){
 }
 
 // Global datastore
-var listings;
+var questions;
 
-// Implement addListing()
-function addListing(){
-var newListing = {};
+// Implement addQuestion()
+function addQuestion(){
+var newQuestion = {};
 
 console.log("hello");
 var ai = $('#author-input').val();
 var di = $('#desc-input').val();
 var pi = $('#price-input').val();
 
-newListing.author = ai;
-newListing.desc = di;
-newListing.price = pi;
-newListing.date = new Date();
+newQuestion.author = ai;
+newQuestion.desc = di;
+newQuestion.price = pi;
+newQuestion.date = new Date();
 
-print(newListing);
+print(newQuestion);
 
-listings.push(newListing);
+questions.push(newQuestion);
 window.add(di, ai, pi);
 refreshDOM();
 
@@ -44,21 +44,21 @@ $('#price-input').val("");
 
 // Implement refreshDOM()
 function refreshDOM(){
-if (listings === undefined) return;
+if (questions === undefined) return;
 
-var container = $(".listings");
+var container = $(".questions");
 container.html("");
 
-for (var i=0; i<listings.length; i++){
-  var currentListing = listings[i];
+for (var i=0; i<questions.length; i++){
+  var currentQuestion = questions[i];
   var listItem = $("<li>");
   // content
-  listItem.append($("<h3>").html(currentListing.author));
-  listItem.append("<h6>" + currentListing.date + "</h6>");
-  listItem.append("<p>" + currentListing.desc + "</p>");
-  listItem.append("<p>$" + currentListing.price + "</p>");
+  listItem.append($("<h3>").html(currentQuestion.author));
+  listItem.append("<h6>" + currentQuestion.date + "</h6>");
+  listItem.append("<p>" + currentQuestion.desc + "</p>");
+  listItem.append("<p>$" + currentQuestion.price + "</p>");
 
-  if (currentListing.sold === true) {
+  if (currentQuestion.sold === true) {
     print("its sold already");
     listItem.addClass("sold");
   }
@@ -71,7 +71,7 @@ for (var i=0; i<listings.length; i++){
     var buttonClicked = $(this);
     var buttonID = buttonClicked.attr("id");
     print("delete");
-    listings.splice(buttonID, 1);
+    questions.splice(buttonID, 1);
     window.del(buttonID);
     refreshDOM();
   });
@@ -99,7 +99,7 @@ for (var i=0; i<listings.length; i++){
     var buttonID = buttonClicked.attr("id");
 
     buttonClicked.parent().addClass("sold");
-    listings[buttonID].sold = true;//!(listings[buttonID].sold);
+    questions[buttonID].sold = true;//!(questions[buttonID].sold);
 
     /* edit(id, desc, author, price, sold) */
     window.edit(buttonID, l.desc, l.author, undefined, true );
@@ -109,7 +109,7 @@ for (var i=0; i<listings.length; i++){
   // listItem += "</li>";
 
 
-  $(".listings").append(listItem);
+  $(".questions").append(listItem);
 }
 }
 
@@ -117,10 +117,10 @@ for (var i=0; i<listings.length; i++){
 function get() {
   $.ajax({
     type: "get",
-    url: "/listings",
+    url: "/questions",
     success: function(data) {
-      listings = data.listings;
-      //console.log(listings);
+      questions = data.questions;
+      //console.log(questions);
       refreshDOM();
     }
   });
@@ -131,7 +131,7 @@ function add(desc, author, price) {
   $.ajax({
     type: "post",
     data: {"desc": desc, "author": author, "price": price},
-    url: "/listings",
+    url: "/questions",
     success: function(data) { }
   });
 }
@@ -140,7 +140,7 @@ function edit(id, desc, author, price, sold) {
   $.ajax({
     type: "put",
     data: {desc: desc, author: author, price: price, sold: sold},
-    url: "/listings/" + id,
+    url: "/questions/" + id,
     success: function(data) { }
   });
 }
@@ -148,7 +148,7 @@ function edit(id, desc, author, price, sold) {
 function del(id) {
   $.ajax({
     type: "delete",
-    url: "/listings/" + id,
+    url: "/questions/" + id,
     success: function(data) {
       //console.log(data);
     }
@@ -158,7 +158,7 @@ function del(id) {
 function delAll() {
   $.ajax({
     type: "delete",
-    url: "/listings",
+    url: "/questions",
     success: function(data) { }
   });
 }

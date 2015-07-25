@@ -39,6 +39,19 @@ function writeFile(filename, data, callbackFn) {
   });
 }
 
+///QUESTIONS
+
+// get all items
+app.get("/questions", function(request, response){
+  response.send({
+    questions: questions,
+    success: true
+  });
+});
+
+
+///LISTINGS
+
 // get all items
 app.get("/listings", function(request, response){
   response.send({
@@ -141,6 +154,10 @@ function initServer() {
   var defaultList = "[]";
   readFile("data.txt", defaultList, function(err, data) {
     listings = JSON.parse(data);
+  });
+
+  readFile("questions.txt", defaultList, function(err, data) {
+    questions = JSON.parse(data);
   });
 }
 
