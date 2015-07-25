@@ -50,16 +50,6 @@ app.get("/questions", function(request, response){
 });
 
 
-///LISTINGS
-
-// get all items
-app.get("/questions", function(request, response){
-  response.send({
-    questions: questions,
-    success: true
-  });
-});
-
 // // get one item
 // app.get("/listings/:id", function(request, response){
 //   var id = request.params.id;
